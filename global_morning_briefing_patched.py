@@ -1141,7 +1141,27 @@ def main():
     print("[INFO] building checkpoints...")
     checkpoints = build_korea_facts(macro, indices)
 
-    message = build_message(macro, indices, top15, crypto, news_summary, checkpoints)
+    key_drivers = build_key_drivers(
+        macro,
+        indices,
+        news_items,
+    )
+
+    watchpoints = build_watchpoints(
+        macro,
+        indices,
+    )
+
+    message = build_message(
+        macro,
+        indices,
+        top15,
+        crypto,
+        news_summary,
+        checkpoints,
+        key_drivers,
+        watchpoints,
+    )
 
     print("[INFO] sending telegram...")
     telegram_send_chunked_html(message)
